@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de Películas</title>
+  <link rel="stylesheet" href="final.css">
+</head>
+<body>
+  <!-- Navbar sticky -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#formularioSection">Agregar Película</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Catálogo de Películas</h1>
+  </header>
+  
+  <main>
+    <!-- Sección Catálogo -->
+    <section id="catalogo">
+      <h2>Películas</h2>
+      <div id="lista-peliculas" class="grid-container">
+        <ul id="ulPeliculas"></ul>
+      </div>
+    </section>
+
+    <!-- Sección Formulario -->
+    <section id="formularioSection">
+      <h2>Agregar Película</h2>
+      <form id="formulario-peliculas">
+        <input type="text"   id="titulo"      placeholder="Título" required>
+        <input type="number" id="anio"        placeholder="Año de estreno" min="1800" max="2025" required>
+        <input type="text"   id="genero"      placeholder="Género" required>
+        <input type="text"   id="director"    placeholder="Director/a" required>
+        <textarea            id="descripcion" placeholder="Descripción corta"></textarea>
+        <button type="submit" id="botonAgregar">Agregar Película</button>
+      </form>
+    </section>
+  </main>
+  <script src="final.js" defer></script>
+  <!-- Pie de página: elimina cualquier nav o texto de "Agregar/Ver Películas" -->
+</body>
+</html>

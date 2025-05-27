@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo de Películas</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Popcorn List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+        color: #f5c518;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contenedor {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+        font-family: 'Cinzel', serif;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 6px #000;
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: #eee;
+        margin-bottom: 2rem;
+    }
+
+    a.boton {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: #f5c518;
+        color: #111;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        transition: background 0.3s;
+    }
+
+    a.boton:hover {
+        background-color: #e0b012;
+    }
+    </style>
 </head>
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="#catalogo">Catálogo</a></li>
-      <li><a href="#formularioSection">Agregar Película</a></li>
-    </ul>
-  </nav>
-
-  <header>
-    <h1>Catálogo de Películas</h1>
-  </header>
-  
-  <main>
-    <section id="filtros">
-      <h2>Filtrar películas</h2>
-      <form id="form-filtros">
-        <input type="number" id="filtroAnio" placeholder="Año de estreno">
-        <input type="text" id="filtroGenero" placeholder="Género">
-        <input type="text" id="filtroDirector" placeholder="Director/a">
-        <button type="submit">Aplicar Filtros</button>
-        <button type="button" id="limpiarFiltros">Limpiar</button>
-    </form>
-  </section>
-
-    <section id="catalogo">
-      <h2>Películas</h2>
-      <div id="lista-peliculas" class="grid-container">
-        <ul id="ulPeliculas"></ul>
-      </div>
-    </section>
-
-    
-    <section id="formularioSection">
-      <h2>Agregar Película</h2>
-      <form id="formulario-peliculas">
-        <input type="text"   id="titulo"      placeholder="Título" required>
-        <input type="number" id="anio"        placeholder="Año de estreno" min="1800" max="2025" required>
-        <input type="text"   id="genero"      placeholder="Género" required>
-        <input type="text"   id="director"    placeholder="Director/a" required>
-        <textarea            id="descripcion" placeholder="Descripción corta"></textarea>
-        <button type="submit" id="botonAgregar">Agregar Película</button>
-      </form>
-    </section>
-  </main>
-  <script src="script.js" defer></script>
-  
+    <div class="contenedor">
+    <h1>🍿 Popcorn List</h1>
+    <p>Tu catálogo personal de películas imperdibles</p>
+    <a href="catalogo.html" class="boton">Entrar al catálogo</a>
+    </div>
 </body>
 </html>

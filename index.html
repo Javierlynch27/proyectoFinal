@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Catálogo de Películas</title>
-  <link rel="stylesheet" href="final.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navbar sticky -->
   <nav class="navbar">
     <ul>
       <li><a href="#catalogo">Catálogo</a></li>
@@ -20,7 +19,17 @@
   </header>
   
   <main>
-    <!-- Sección Catálogo -->
+    <section id="filtros">
+      <h2>Filtrar películas</h2>
+      <form id="form-filtros">
+        <input type="number" id="filtroAnio" placeholder="Año de estreno">
+        <input type="text" id="filtroGenero" placeholder="Género">
+        <input type="text" id="filtroDirector" placeholder="Director/a">
+        <button type="submit">Aplicar Filtros</button>
+        <button type="button" id="limpiarFiltros">Limpiar</button>
+    </form>
+  </section>
+
     <section id="catalogo">
       <h2>Películas</h2>
       <div id="lista-peliculas" class="grid-container">
@@ -28,7 +37,7 @@
       </div>
     </section>
 
-    <!-- Sección Formulario -->
+    
     <section id="formularioSection">
       <h2>Agregar Película</h2>
       <form id="formulario-peliculas">
@@ -41,7 +50,7 @@
       </form>
     </section>
   </main>
-  <script src="final.js" defer></script>
-  <!-- Pie de página: elimina cualquier nav o texto de "Agregar/Ver Películas" -->
+  <script src="script.js" defer></script>
+  
 </body>
 </html>

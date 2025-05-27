@@ -1,13 +1,12 @@
-// final.js
 
 const peliculas = [];
-let indiceEditando = -1; // -1 significa que no estamos editando
+let indiceEditando = -1; 
 
 const formulario = document.getElementById("formulario-peliculas");
 const ulPeliculas = document.getElementById("ulPeliculas");
 const botonAgregar = document.getElementById("botonAgregar");
 
-// Evento de envío del formulario
+
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -43,11 +42,25 @@ formulario.addEventListener("submit", function (e) {
 function mostrarPeliculas() {
   ulPeliculas.innerHTML = "";
 
+  let filtroAnio = document.getElementById("filtroAnio").value.trim();
+  let filtroGenero = document.getElementById("filtroGenero").value.trim().toLowerCase();
+  let filtroDirector = document.getElementById("filtroDirector").value.trim().toLowerCase();
+
   for (let i = 0; i < peliculas.length; i++) {
     let pelicula = peliculas[i];
 
+    if (filtroAnio && pelicula.anio.toString() !== filtroAnio) continue;
+    if (filtroGenero && !pelicula.genero.toLowerCase().includes(filtroGenero)) continue;
+    if (filtroDirector && !pelicula.director.toLowerCase().includes(filtroDirector)) continue;
+
+
     let li = document.createElement("li");
     li.className = "bloque";
+
+    let icono = document.createElement("div");
+    icono.textContent = "🎬";
+    icono.className = "icono-pelicula";
+    li.appendChild(icono);
 
     let h3 = document.createElement("h3");
     h3.textContent = pelicula.titulo + " (" + pelicula.anio + ")";
@@ -71,14 +84,12 @@ function mostrarPeliculas() {
     let botonEditar = document.createElement("button");
     botonEditar.textContent = "Editar";
     botonEditar.className = "boton-editar";
-
     botonEditar.addEventListener("click", function () {
       document.getElementById("titulo").value = pelicula.titulo;
       document.getElementById("anio").value = pelicula.anio;
       document.getElementById("genero").value = pelicula.genero;
       document.getElementById("director").value = pelicula.director;
       document.getElementById("descripcion").value = pelicula.descripcion;
-
       indiceEditando = i;
       botonAgregar.textContent = "Guardar Cambios";
     });
@@ -86,11 +97,9 @@ function mostrarPeliculas() {
     let botonEliminar = document.createElement("button");
     botonEliminar.textContent = "Eliminar";
     botonEliminar.className = "boton-eliminar";
-
     botonEliminar.addEventListener("click", function () {
       peliculas.splice(i, 1);
       mostrarPeliculas();
-
       if (indiceEditando === i) {
         formulario.reset();
         indiceEditando = -1;
@@ -104,6 +113,20 @@ function mostrarPeliculas() {
     ulPeliculas.appendChild(li);
   }
 }
+
+document.getElementById("form-filtros").addEventListener("submit", function (e) {
+  e.preventDefault();
+  mostrarPeliculas();
+});
+
+
+document.getElementById("limpiarFiltros").addEventListener("click", function () {
+  document.getElementById("filtroAnio").value = "";
+  document.getElementById("filtroGenero").value = "";
+  document.getElementById("filtroDirector").value = "";
+  mostrarPeliculas();
+});
+
 
 
 

@@ -1,136 +1,95 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const contenedorProductos = document.querySelector('.productos');
+  const listaElementosCarrito = document.querySelector('.elementos-carrito');
+  const elementoTotalCarrito = document.querySelector('.total-carrito');
+  let carrito = [];
 
-const peliculas = [];
-let indiceEditando = -1; 
+  const productosDisponibles = [
+    { id: 1, nombre: 'Acqua di Gio', precio: 75.00, imagen: 'https://via.placeholder.com/200x200' },
+    { id: 2, nombre: 'Hugo Boss Bottled', precio: 65.00, imagen: 'https://via.placeholder.com/200x200' },
+    { id: 3, nombre: 'Paco Rabanne Invictus', precio: 80.00, imagen: 'https://via.placeholder.com/200x200' },
+    { id: 4, nombre: 'Dior Sauvage', precio: 90.00, imagen: 'https://via.placeholder.com/200x200' }
+  ];
 
-const formulario = document.getElementById("formulario-peliculas");
-const ulPeliculas = document.getElementById("ulPeliculas");
-const botonAgregar = document.getElementById("botonAgregar");
-
-
-formulario.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const nuevaPeli = {
-    titulo: document.getElementById("titulo").value,
-    anio: document.getElementById("anio").value,
-    genero: document.getElementById("genero").value,
-    director: document.getElementById("director").value,
-    descripcion: document.getElementById("descripcion").value
-  };
-
-  const anioNum = parseInt(nuevaPeli.anio, 10);
-  if (isNaN(anioNum) || anioNum < 1800 || anioNum > 2025) {
-    alert("El año debe ser un número entre 1800 y 2025.");
-    return;
+  function renderizarProductos() {
+    contenedorProductos.innerHTML = productosDisponibles.map(prod => `
+      <article class="tarjeta-producto">
+        <img src="${prod.imagen}" alt="Perfume ${prod.nombre}">
+        <h3>${prod.nombre}</h3>
+        <p class="precio">$${prod.precio.toFixed(2)}</p>
+        <button class="boton-agregar" data-id="${prod.id}">Agregar al carrito</button>
+      </article>
+    `).join('');
   }
 
-  nuevaPeli.anio = anioNum;
+  function renderizarCarrito() {
+    if (!carrito.length) {
+      listaElementosCarrito.innerHTML = '<li class="vacio">No hay productos en el carrito.</li>';
+      elementoTotalCarrito.textContent = '0.00';
+      return;
+    }
 
-  if (indiceEditando !== -1) {
-    peliculas[indiceEditando] = nuevaPeli;
-    indiceEditando = -1;
-    botonAgregar.textContent = "Agregar Película";
-  } else {
-    peliculas.push(nuevaPeli);
+    listaElementosCarrito.innerHTML = carrito.map(item => {
+      const producto = productosDisponibles.find(p => p.id === item.id);
+      return `
+        <li>
+          <span>${producto.nombre}</span>
+          <input type="number" min="1" value="${item.cantidad}" data-id="${item.id}" class="entrada-cantidad">
+          <span>$${(producto.precio * item.cantidad).toFixed(2)}</span>
+          <button class="boton-eliminar" data-id="${item.id}">&times;</button>
+        </li>
+      `;
+    }).join('');
+
+    const total = carrito.reduce((acum, item) => {
+      const prod = productosDisponibles.find(p => p.id === item.id);
+      return acum + prod.precio * item.cantidad;
+    }, 0);
+    elementoTotalCarrito.textContent = total.toFixed(2);
   }
 
-  formulario.reset();
-  mostrarPeliculas();
-});
-
-
-function mostrarPeliculas() {
-  ulPeliculas.innerHTML = "";
-
-  let filtroAnio = document.getElementById("filtroAnio").value.trim();
-  let filtroGenero = document.getElementById("filtroGenero").value.trim().toLowerCase();
-  let filtroDirector = document.getElementById("filtroDirector").value.trim().toLowerCase();
-
-  for (let i = 0; i < peliculas.length; i++) {
-    let pelicula = peliculas[i];
-
-    if (filtroAnio && pelicula.anio.toString() !== filtroAnio) continue;
-    if (filtroGenero && !pelicula.genero.toLowerCase().includes(filtroGenero)) continue;
-    if (filtroDirector && !pelicula.director.toLowerCase().includes(filtroDirector)) continue;
-
-
-    let li = document.createElement("li");
-    li.className = "bloque";
-
-    let icono = document.createElement("div");
-    icono.textContent = "🎬";
-    icono.className = "icono-pelicula";
-    li.appendChild(icono);
-
-    let h3 = document.createElement("h3");
-    h3.textContent = pelicula.titulo + " (" + pelicula.anio + ")";
-    li.appendChild(h3);
-
-    let pGenero = document.createElement("p");
-    pGenero.innerHTML = "<strong>Género:</strong> " + pelicula.genero;
-    li.appendChild(pGenero);
-
-    let pDirector = document.createElement("p");
-    pDirector.innerHTML = "<strong>Director:</strong> " + pelicula.director;
-    li.appendChild(pDirector);
-
-    let pDescripcion = document.createElement("p");
-    pDescripcion.textContent = pelicula.descripcion;
-    li.appendChild(pDescripcion);
-
-    let contenedorBotones = document.createElement("div");
-    contenedorBotones.className = "botonera";
-
-    let botonEditar = document.createElement("button");
-    botonEditar.textContent = "Editar";
-    botonEditar.className = "boton-editar";
-    botonEditar.addEventListener("click", function () {
-      document.getElementById("titulo").value = pelicula.titulo;
-      document.getElementById("anio").value = pelicula.anio;
-      document.getElementById("genero").value = pelicula.genero;
-      document.getElementById("director").value = pelicula.director;
-      document.getElementById("descripcion").value = pelicula.descripcion;
-      indiceEditando = i;
-      botonAgregar.textContent = "Guardar Cambios";
-    });
-
-    let botonEliminar = document.createElement("button");
-    botonEliminar.textContent = "Eliminar";
-    botonEliminar.className = "boton-eliminar";
-    botonEliminar.addEventListener("click", function () {
-      peliculas.splice(i, 1);
-      mostrarPeliculas();
-      if (indiceEditando === i) {
-        formulario.reset();
-        indiceEditando = -1;
-        botonAgregar.textContent = "Agregar Película";
-      }
-    });
-
-    contenedorBotones.appendChild(botonEditar);
-    contenedorBotones.appendChild(botonEliminar);
-    li.appendChild(contenedorBotones);
-    ulPeliculas.appendChild(li);
+  function agregarAlCarrito(id) {
+    const existe = carrito.find(item => item.id === id);
+    if (existe) {
+      existe.cantidad++;
+    } else {
+      carrito.push({ id, cantidad: 1 });
+    }
+    renderizarCarrito();
   }
-}
 
-document.getElementById("form-filtros").addEventListener("submit", function (e) {
-  e.preventDefault();
-  mostrarPeliculas();
+  function eliminarDelCarrito(id) {
+    carrito = carrito.filter(item => item.id !== id);
+    renderizarCarrito();
+  }
+
+  function actualizarCantidad(id, cantidad) {
+    const item = carrito.find(i => i.id === id);
+    if (item && cantidad > 0) {
+      item.cantidad = cantidad;
+    }
+    renderizarCarrito();
+  }
+
+  contenedorProductos.addEventListener('click', e => {
+    if (e.target.classList.contains('boton-agregar')) {
+      agregarAlCarrito(Number(e.target.dataset.id));
+    }
+  });
+
+  listaElementosCarrito.addEventListener('click', e => {
+    if (e.target.classList.contains('boton-eliminar')) {
+      eliminarDelCarrito(Number(e.target.dataset.id));
+    }
+  });
+
+  listaElementosCarrito.addEventListener('change', e => {
+    if (e.target.classList.contains('entrada-cantidad')) {
+      actualizarCantidad(Number(e.target.dataset.id), Number(e.target.value));
+    }
+  });
+
+  renderizarProductos();
+  renderizarCarrito();
 });
-
-
-document.getElementById("limpiarFiltros").addEventListener("click", function () {
-  document.getElementById("filtroAnio").value = "";
-  document.getElementById("filtroGenero").value = "";
-  document.getElementById("filtroDirector").value = "";
-  mostrarPeliculas();
-});
-
-
-
-
-
-
-
 

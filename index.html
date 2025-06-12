@@ -1,77 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Popcorn List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
-    <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
-        color: #f5c518;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .contenedor {
-        text-align: center;
-        padding: 2rem;
-    }
-
-    h1 {
-        font-size: 4rem;
-        font-family: 'Cinzel', serif;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 6px #000;
-    }
-
-    p {
-        font-size: 1.4rem;
-        color: #eee;
-        margin-bottom: 2rem;
-    }
-
-    a.boton {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: #f5c518;
-        color: #111;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-        transition: background 0.3s;
-    }
-
-    a.boton:hover {
-        background-color: #e0b012;
-    }
-    .autor {
-    position: absolute;
-    bottom: 1rem;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #999;
-    font-style: italic;
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Perfumes para Hombres</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="contenedor">
-    <h1>🍿 Popcorn List</h1>
-    <p>Tu catálogo personal de películas imperdibles</p>
-    <a href="catalogo.html" class="boton">Entrar al catálogo</a>
-    </div>
+  <header>
+    <h1>Tienda de Perfumes para Hombres</h1>
+    <nav>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#carrito">Carrito</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main class="contenedor-principal">
+    <section id="productos" class="productos">
+      <!-- Aquí se inyectan los productos -->
+    </section>
+
+    <aside id="carrito" class="carrito">
+      <h2>Carrito</h2>
+      <ul class="elementos-carrito">
+        <li class="vacio">No hay productos en el carrito.</li>
+      </ul>
+      <div class="pie-carrito">
+        <p>Total: $<span class="total-carrito">0.00</span></p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Perfumes para Hombres</p>
+  </footer>
 </body>
-<footer class="autor">
-    <p>Desarrollado por <strong>Javier Lynch</strong> · 2025</p>
-</footer>
 </html>

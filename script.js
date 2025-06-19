@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 1, nombre: 'Acqua di Gio', precio: 75.00, imagen: 'ImagenesPagina/Acqua di gio.webp' },
     { id: 2, nombre: 'Hugo Boss Bottled', precio: 65.00, imagen: 'ImagenesPagina/Hugo bosss bottled.webp' },
     { id: 3, nombre: 'Paco Rabanne Invictus', precio: 80.00, imagen: 'ImagenesPagina/Paco Rabanne.png' },
-    { id: 4, nombre: 'Dior Sauvage', precio: 90.00, imagen: 'ImagenesPagina/Dior Sauvage.webp' }
+    { id: 4, nombre: 'Dior Sauvage', precio: 90.00, imagen: 'ImagenesPagina/Dior Sauvage.webp' },
+    { id: 5, nombre: 'Azzaro Most Wanted', precio: 70.00, imagen: 'ImagenesPagina/Azzaro Most Wanted.webp' },
+    { id: 6, nombre: 'Bleu De Channel', precio: 100.00, imagen: 'ImagenesPagina/Bleu De Channel.png' },
+    { id: 7, nombre: 'Versace Pour Homme', precio: 85.00, imagen: 'ImagenesPagina/Versace Pour Homme.png' }
   ];
 
   function renderizarProductos(lista = productosDisponibles) {
@@ -85,9 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarProductos(filtrados);
   });
 
-  // BOTÓN COMPRAR
   btnComprar.addEventListener('click', () => {
-    if (carrito.length === 0) {
+    if (!carrito.length) {
       alert('El carrito está vacío');
     } else {
       alert('Compra realizada');

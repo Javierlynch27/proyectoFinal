@@ -5,11 +5,32 @@ document.addEventListener('DOMContentLoaded', () => {
   let carrito = [];
 
   const productosDisponibles = [
-    { id: 1, nombre: 'Acqua di Gio', precio: 75.00, imagen: 'https://via.placeholder.com/200x200' },
-    { id: 2, nombre: 'Hugo Boss Bottled', precio: 65.00, imagen: 'https://via.placeholder.com/200x200' },
-    { id: 3, nombre: 'Paco Rabanne Invictus', precio: 80.00, imagen: 'https://via.placeholder.com/200x200' },
-    { id: 4, nombre: 'Dior Sauvage', precio: 90.00, imagen: 'https://via.placeholder.com/200x200' }
-  ];
+  {
+    id: 1,
+    nombre: 'Acqua di Gio',
+    precio: 75.00,
+    imagen: 'ImagenesPagina/Acqua di gio.webp'
+  },
+  {
+    id: 2,
+    nombre: 'Hugo Boss Bottled',
+    precio: 65.00,
+    imagen: 'ImagenesPagina/Hugo bosss bottled.webp'
+  },
+  {
+    id: 3,
+    nombre: 'Paco Rabanne Invictus',
+    precio: 80.00,
+    imagen: 'ImagenesPagina/Paco Rabanne.png'
+  },
+  {
+    id: 4,
+    nombre: 'Dior Sauvage',
+    precio: 90.00,
+    imagen: 'ImagenesPagina/Dior Sauvage.webp'
+  }
+];
+
 
   function renderizarProductos() {
     contenedorProductos.innerHTML = productosDisponibles.map(prod => `

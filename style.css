@@ -157,6 +157,6 @@ footer {
 
 @media (max-width: 768px) {
   .contenedor-principal {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
   }
 }

@@ -4,71 +4,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alta Fragancia</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS (lo dejo tal cual, no lo toco) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <!-- Fuente Montserrat -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  >
+  <!-- Mis estilos personalizados -->
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand logo" href="#">Alta Fragancia</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto nav__list">
-          <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#carrito">Carrito</a></li>
-        </ul>
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+      <div class="container">
+        <!-- Logo de la tienda -->
+        <a class="navbar-brand logo" href="#">Alta Fragancia</a>
+        <!-- Botón hamburguesa para móvil -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menú de navegación -->
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto nav__list">
+            <li class="nav-item">
+              <a class="nav-link" href="#productos">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#carrito">Carrito</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- HERO -->
+  <!-- SECCIÓN HERO -->
   <section class="hero d-flex align-items-center">
     <div class="container text-center hero__content">
+      <!-- Mensaje principal -->
       <h1>Encuentra tu aroma ideal</h1>
       <p>Selección exclusiva de fragancias de las mejores marcas.</p>
+      <!-- Botón para bajar a productos -->
       <a href="#productos" class="btn btn--primary">Ver Productos</a>
     </div>
   </section>
 
-  <!-- MAIN -->
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="container my-5">
     <div class="d-flex gap-4 flex-wrap">
-      
-      <!-- PRODUCTOS -->
-      <div class="productos flex-grow-1">
-        <div class="mb-4 buscador-wrapper">
-          <input type="text" id="buscador" class="form-control" placeholder="🔍 Buscar perfume...">
-        </div>
-        <div id="productos" class="productos__grid">
-          <!-- .tarjeta-producto inyectadas por script.js -->
-        </div>
-      </div>
 
-      <!-- CARRITO -->
-      <aside id="carrito" class="card carrito p-3" style="min-width: 300px; max-width: 350px;">
-        <h5 class="card-title">Tu Carrito</h5>
+      <!-- LISTA DE PRODUCTOS -->
+      <section id="productos" class="productos flex-grow-1">
+        <!-- Buscador en vivo -->
+        <div class="mb-4 buscador-wrapper">
+          <input
+            type="text"
+            id="buscador"
+            class="form-control"
+            placeholder="🔍 Buscar perfume..."
+            aria-label="Buscar perfume"
+          >
+        </div>
+        <!-- Aquí se inyectan las tarjetas de producto -->
+        <div class="productos__grid"></div>
+      </section>
+
+      <!-- CARRITO DE COMPRAS -->
+      <aside id="carrito" class="card carrito p-3" style="min-width:300px; max-width:350px;">
+        <h2 class="card-title">Tu Carrito</h2>
         <ul class="elementos-carrito list-unstyled mb-3">
+          <!-- Mensaje cuando está vacío -->
           <li class="vacio text-center">No hay productos en el carrito.</li>
         </ul>
+        <!-- Total -->
         <div class="d-flex justify-content-between mb-3">
           <span>Total:</span>
           <strong>$<span class="total-carrito">0.00</span></strong>
         </div>
-        <button id="btn-comprar" class="btn btn-success w-100 btn-comprar">Comprar</button>
+        <!-- Botón de compra -->
+        <button id="btn-comprar" class="btn btn-success w-100 btn-comprar">
+          Comprar
+        </button>
       </aside>
 
     </div>
   </main>
 
-  <!-- FEATURES -->
+  <!-- SECCIÓN DE BENEFICIOS -->
   <section class="features container d-flex justify-content-between border-top border-bottom py-4">
     <div class="text-center flex-fill">
       <div class="icon mb-2">🚚</div>
@@ -92,6 +126,7 @@
     <div class="container text-center">
       <p class="mb-2">&copy; 2025 Alta Fragancia</p>
       <div class="social">
+        <!-- Íconos sociales (placeholder) -->
         <a href="#" class="text-white me-3">👍</a>
         <a href="#" class="text-white me-3">📸</a>
         <a href="#" class="text-white">🐦</a>
@@ -99,7 +134,11 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- Scripts de Bootstrap y mi JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    defer
+  ></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

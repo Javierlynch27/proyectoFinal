@@ -1,3 +1,6 @@
+/*==============================
+  Variables y Reset
+==============================*/
 :root {
   --primario: #5d5d6d;
   --acento:   #bfa76d;
@@ -9,7 +12,6 @@
   --font: 'Montserrat', sans-serif;
 }
 
-/* Reset y base */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +25,9 @@ body {
   line-height: 1.6;
 }
 
-/* Navbar */
+/*==============================
+  Navbar
+==============================*/
 .navbar {
   background: var(--claro) !important;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -37,11 +41,15 @@ body {
   color: var(--claro) !important;
 }
 
-/* Hero */
+/*==============================
+  Hero
+==============================*/
 .hero {
   position: relative;
   background: url('ImagenesPagina/imagenFondo.png') center/cover no-repeat;
   height: 60vh;
+  display: flex;
+  align-items: center;
 }
 .hero::before {
   content: '';
@@ -52,12 +60,13 @@ body {
 .hero__content {
   position: relative;
   z-index: 1;
+  text-align: center;
   color: var(--claro);
 }
 .hero__content h1 { font-size: 2.5rem; }
 .hero__content p  { font-size: 1.1rem; }
 
-/* Botón primario */
+/* Botón principal */
 .btn--primary {
   background: var(--acento) !important;
   border-color: var(--acento) !important;
@@ -71,21 +80,31 @@ body {
   color: var(--claro) !important;
 }
 
-/* PRODUCTOS: CSS GRID para que entren 4 tarjetas */
+/*==============================
+  Grid de Productos (ajuste para búsquedas)
+==============================*/
 .productos__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* Cada tarjeta mide 260px y no se expande más allá de su contenido */
+  grid-template-columns: repeat(auto-fit, minmax(260px, max-content));
   gap: 1.5rem;
+  justify-content: center;  /* centra las tarjetas si son pocas */
 }
 
-/* TARJETA DE PRODUCTO */
+/*==============================
+  Tarjeta de Producto
+==============================*/
 .tarjeta-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   background: var(--claro);
   border-radius: .5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
-  text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
+  width: 100%;
+  max-width: 260px;
 }
 .tarjeta-producto:hover {
   transform: translateY(-5px);
@@ -94,16 +113,18 @@ body {
 .tarjeta-producto img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: var(--gris);
 }
 .tarjeta-producto h3 {
   margin: .75rem 0 .25rem;
-  font-size: 1.2rem;
+  text-align: center;
 }
 .precio {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--acento);
+  text-align: center;
   margin-bottom: .75rem;
 }
 .boton-agregar {
@@ -111,9 +132,8 @@ body {
   color: var(--oscuro);
   border: none;
   padding: .6rem 1rem;
+  margin: 0 1rem 1rem;
   border-radius: .25rem;
-  width: calc(100% - 2rem);
-  margin: 0 auto 1rem;
   transition: background var(--transition);
 }
 .boton-agregar:hover {
@@ -121,7 +141,9 @@ body {
   color: var(--claro);
 }
 
-/* CARRITO: grid de 4 columnas para alinear */
+/*==============================
+  Carrito (Grid)
+==============================*/
 .elementos-carrito {
   list-style: none;
   max-height: 300px;
@@ -141,25 +163,21 @@ body {
   justify-content: center;
 }
 .entrada-cantidad {
+  width: 60px;
   text-align: center;
 }
 .elementos-carrito li span:nth-child(3) {
   text-align: right;
   font-weight: 600;
 }
-
-/* BOTÓN COMPRAR */
 .btn-comprar {
   font-weight: 600;
 }
 
-/* FEATURES */
-.features .icon {
-  font-size: 2rem;
-  margin-bottom: .5rem;
-}
-
-/* FOOTER */
+/*==============================
+  Features y Footer
+==============================*/
+.features .icon { font-size: 2rem; margin-bottom: .5rem; }
 .footer {
   background: var(--oscuro);
   color: var(--claro);
@@ -168,11 +186,12 @@ body {
   color: var(--acento) !important;
 }
 
-/* RESPONSIVE */
+/*==============================
+  Responsive (móvil)
+==============================*/
 @media (max-width: 600px) {
   .hero { height: 40vh; }
   .hero__content h1 { font-size: 1.8rem; }
   .hero__content p  { font-size: 1rem; }
-  .carrito { margin-top: 2rem; }
+  #carrito { margin-top: 2rem; }
 }
-

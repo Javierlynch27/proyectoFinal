@@ -4,93 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alta Fragancia</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header__inner">
-      <a href="#" class="logo">Alta Fragancia</a>
-      <nav class="nav">
-        <ul class="nav__list">
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#carrito">Carrito</a></li>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand logo" href="#">Alta Fragancia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto nav__list">
+          <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#carrito">Carrito</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero__content">
-        <h1>Encuentra tu aroma ideal</h1>
-        <p>Selección exclusiva de fragancias de las mejores marcas.</p>
-        <a href="#productos" class="btn btn--primary">Ver Productos</a>
-      </div>
+  <section class="hero d-flex align-items-center">
+    <div class="container text-center hero__content">
+      <h1>Encuentra tu aroma ideal</h1>
+      <p>Selección exclusiva de fragancias de las mejores marcas.</p>
+      <a href="#productos" class="btn btn--primary">Ver Productos</a>
     </div>
   </section>
 
   <!-- MAIN -->
-  <main class="container contenedor-principal">
-
-    <!-- PRODUCTOS -->
-    <section id="productos" class="productos">
-      <div class="buscador-wrapper">
-        <input type="text" id="buscador" placeholder="🔍 Buscar perfume...">
+  <main class="container my-5">
+    <div class="d-flex gap-4 flex-wrap">
+      
+      <!-- PRODUCTOS -->
+      <div class="productos flex-grow-1">
+        <div class="mb-4 buscador-wrapper">
+          <input type="text" id="buscador" class="form-control" placeholder="🔍 Buscar perfume...">
+        </div>
+        <div id="productos" class="productos__grid">
+          <!-- .tarjeta-producto inyectadas por script.js -->
+        </div>
       </div>
-      <div class="productos__grid">
-        <!-- inyectado por script.js -->
-      </div>
-    </section>
 
-    <!-- CARRITO -->
-    <aside id="carrito" class="carrito">
-      <h2>Tu Carrito</h2>
-      <ul class="elementos-carrito">
-        <li class="vacio">No hay productos en el carrito.</li>
-      </ul>
-      <div class="pie-carrito">
-        <p>Total: $<span class="total-carrito">0.00</span></p>
-      </div>
-      <button id="btn-comprar" class="btn-comprar">Comprar</button>
-    </aside>
+      <!-- CARRITO -->
+      <aside id="carrito" class="card carrito p-3" style="min-width: 300px; max-width: 350px;">
+        <h5 class="card-title">Tu Carrito</h5>
+        <ul class="elementos-carrito list-unstyled mb-3">
+          <li class="vacio text-center">No hay productos en el carrito.</li>
+        </ul>
+        <div class="d-flex justify-content-between mb-3">
+          <span>Total:</span>
+          <strong>$<span class="total-carrito">0.00</span></strong>
+        </div>
+        <button id="btn-comprar" class="btn btn-success w-100 btn-comprar">Comprar</button>
+      </aside>
 
+    </div>
   </main>
 
   <!-- FEATURES -->
-  <section class="features container">
-    <div class="feature">
-      <span class="icon">🚚</span>
-      <h3>Envío Gratis</h3>
-      <p>En pedidos superiores a $100</p>
+  <section class="features container d-flex justify-content-between border-top border-bottom py-4">
+    <div class="text-center flex-fill">
+      <div class="icon mb-2">🚚</div>
+      <h6>Envío Gratis</h6>
+      <small>En pedidos superiores a $100</small>
     </div>
-    <div class="feature">
-      <span class="icon">🔒</span>
-      <h3>Pago Seguro</h3>
-      <p>Protegido con SSL</p>
+    <div class="text-center flex-fill">
+      <div class="icon mb-2">🔒</div>
+      <h6>Pago Seguro</h6>
+      <small>Protegido con SSL</small>
     </div>
-    <div class="feature">
-      <span class="icon">💯</span>
-      <h3>Calidad Garantizada</h3>
-      <p>Garantía de 30 días</p>
+    <div class="text-center flex-fill">
+      <div class="icon mb-2">💯</div>
+      <h6>Calidad Garantizada</h6>
+      <small>Garantía de 30 días</small>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p>&copy; 2025 Alta Fragancia</p>
+  <footer class="footer bg-dark text-white py-4">
+    <div class="container text-center">
+      <p class="mb-2">&copy; 2025 Alta Fragancia</p>
       <div class="social">
-        <a href="#" aria-label="Facebook">👍</a>
-        <a href="#" aria-label="Instagram">📸</a>
-        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" class="text-white me-3">👍</a>
+        <a href="#" class="text-white me-3">📸</a>
+        <a href="#" class="text-white">🐦</a>
       </div>
     </div>
   </footer>
 
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 </body>
 </html>
